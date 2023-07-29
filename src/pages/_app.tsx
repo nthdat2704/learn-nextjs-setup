@@ -5,16 +5,31 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ReactNode } from 'react'
 import { SWRConfig } from 'swr'
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import { theme, createEmotionCache } from '@/utils';
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+export interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+export default function App({ Component, pageProps, emotionCache = clientSideEmotionCache }: AppPropsWithLayout) {
   const Layout: any = Component.Layout ?? EmptyLayout
   return (
-    <SWRConfig value={{
-      fetcher: (url) => axiosClient.get(url),
-      shouldRetryOnError: false,
-    }}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </SWRConfig>)
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <SWRConfig value={{
+          fetcher: (url) => axiosClient.get(url),
+          shouldRetryOnError: false,
+        }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SWRConfig>
+      </ThemeProvider>
+    </CacheProvider>
+  )
+
 }

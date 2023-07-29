@@ -1,16 +1,20 @@
 import React from 'react'
 import { LayoutProps } from '@/models'
-import Header from '@/components/common/Header'
+import { HeaderDesktop } from '@/components/common/Header/index'
 import Footer from '@/components/common/Footer'
+import { Box, Stack } from '@mui/material'
+import Link from 'next/link'
 
 
 export const MainLayout = ({ children }: LayoutProps) => {
     return (
-        <div>
-            <Header />
-            {children}
+        <Stack minHeight="100vh">
+            <HeaderDesktop />
+            <Box flexGrow={1}>
+                {children}
+            </Box>
             <Footer />
-        </div>
+        </Stack>
     )
 }
 
