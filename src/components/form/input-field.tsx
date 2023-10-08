@@ -1,7 +1,5 @@
-import { TextField } from '@mui/material';
-import React from 'react'
-import { Control, useController, Controller } from 'react-hook-form';
-import { TextFieldProps } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
+import { Control, useController } from 'react-hook-form';
 type InputFieldProps = TextFieldProps & {
     name: string;
     label?: string;
@@ -23,26 +21,23 @@ export const InputField = ({ name,
     } = useController({
         name,
         control,
-        rules: { required: true },
     })
 
     return (
-        <>
-            <TextField
-                fullWidth
-                size='small'
-                margin='normal'
-                name={name}
-                value={value}
-                onChange={onChange}
-                onBlur={onBlur}
-                inputRef={ref}
-                label={label}
-                error={!!error}
-                helperText={error?.message}
-                {...rest}
+        <TextField
+            fullWidth
+            size='small'
+            margin='normal'
+            name={name}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            inputRef={ref}
+            label={label}
+            error={!!error}
+            helperText={error?.message}
+            {...rest}
 
-            />
-        </>
+        />
     )
 }

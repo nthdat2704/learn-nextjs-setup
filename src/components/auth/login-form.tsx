@@ -1,5 +1,5 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { Button, CircularProgress, IconButton, InputAdornment } from '@mui/material'
+import { Box, Button, CircularProgress, IconButton, InputAdornment } from '@mui/material'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
@@ -35,9 +35,10 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     return (
-        <form onSubmit={handleSubmit(handleLoginSubmit)}>
-            <InputField control={control} name="username" />
+        <Box component="form" onSubmit={handleSubmit(handleLoginSubmit)}>
+            <InputField control={control} name="username" label="Username" />
             <InputField
+                label="Password"
                 control={control}
                 name="password"
                 type={showPassword ? 'text' : 'password'}
@@ -60,6 +61,6 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 
             />
             < Button type='submit' startIcon={isSubmitting ? <CircularProgress color='inherit' size="1em" /> : null} >submit</Button>
-        </form >
+        </Box >
     )
 }
