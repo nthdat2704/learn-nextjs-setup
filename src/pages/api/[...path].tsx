@@ -17,16 +17,24 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    console.log(req.body);
+    //make new promise to fix warning message when not have return response
+    return new Promise((resolve, reject) => {
+        //remove cookie before forward to api
+        req.headers.cookie = ''
+        proxy.web(req, res, {
+            target: 'https://js-post-api.herokuapp.com',
+            changeOrigin: true,
+            //tell proxy handle response
+            selfHandleResponse: false
+        })
+        // to fix warning message when not have return response
+        proxy.once("proxyRes", () => {
+            resolve(true);
+        })
 
 
-    //remove cookie before forward to api
-    req.headers.cookie = ''
-    proxy.web(req, res, {
-        target: 'https://js-post-api.herokuapp.com',
-        changeOrigin: true,
-        //tell proxy handle response
-        selfHandleResponse: false
     })
+
+
 
 }
