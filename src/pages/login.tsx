@@ -1,17 +1,25 @@
 import { LoginForm } from '@/components/auth'
 import { MainLayout } from '@/components/layout'
+import { useAuth } from '@/swrHook'
 import { Box, Paper, Typography } from '@mui/material'
 import React from 'react'
 
 type Props = {}
 
 const Login = (props: Props) => {
-    const handleSubmitLogin = (data: any) => {
-        console.log('login successed', data);
+    const { login, logout } = useAuth({
+        revalidateOnMount: false,
+    })
+    const handleSubmitLogin = async (data: any) => {
+        try {
+            await login(data)
+
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <Box>
-
             <Paper
                 elevation={4}
                 sx={{
