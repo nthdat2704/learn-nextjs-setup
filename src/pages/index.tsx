@@ -1,4 +1,4 @@
-import { MainLayout } from '@/components/layout'
+import { AdminLayout, MainLayout } from '@/components/layout'
 import { Box, Container } from '@mui/material'
 import { FeatureWork, Hero, RecentPost } from '@/components/home'
 import { Seo } from '@/components/common/Seo'

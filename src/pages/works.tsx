@@ -1,4 +1,4 @@
-import { MainLayout } from '@/components/layout'
+import { AdminLayout, MainLayout } from '@/components/layout'
 import React from 'react'
 import { Box } from '@mui/material'
 
@@ -11,5 +11,5 @@ const WorksPage = (props: Props) => {
     )
 }
 
-WorksPage.Layout = MainLayout
+WorksPage.Layout = AdminLayout
 export default WorksPage

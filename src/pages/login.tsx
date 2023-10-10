@@ -2,18 +2,20 @@ import { LoginForm } from '@/components/auth'
 import { MainLayout } from '@/components/layout'
 import { useAuth } from '@/swrHook'
 import { Box, Paper, Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 type Props = {}
 
 const Login = (props: Props) => {
+    const router = useRouter();
     const { login, logout } = useAuth({
         revalidateOnMount: false,
     })
     const handleSubmitLogin = async (data: any) => {
         try {
             await login(data)
-
+            router.push('/')
         } catch (error) {
             console.log(error);
         }
