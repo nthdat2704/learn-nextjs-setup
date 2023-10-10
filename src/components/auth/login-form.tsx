@@ -25,11 +25,11 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
         resolver: yupResolver(schema)
     })
 
-    const handleLoginSubmit = (values: any) => {
+    const handleLoginSubmit = async (values: any) => {
         //nếu gọi api thì phải make func này thành async func thì isSubmitting 
         // mới hoạt động đúng, nếu không nó sẽ run 1 loạt và kết thúc 
 
-        onSubmit?.(values)
+        await onSubmit?.(values)
     }
 
 
@@ -60,7 +60,9 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
                 }
 
             />
-            < Button type='submit' startIcon={isSubmitting ? <CircularProgress color='inherit' size="1em" /> : null} >submit</Button>
+            < Button variant='contained' disabled={isSubmitting} fullWidth={true} sx={{
+                mt: 2
+            }} type='submit' startIcon={isSubmitting ? <CircularProgress color='inherit' size="1em" /> : null} >submit</Button>
         </Box >
     )
 }
