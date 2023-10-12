@@ -1,17 +1,17 @@
 import Footer from '@/components/common/Footer'
-import { HeaderDesktop } from '@/components/common/Header/index'
+import dynamic from 'next/dynamic'
 import { LayoutProps } from '@/models'
-import { Auth } from '../common/auth'
+const Auth = dynamic(() => import('../common/Auth'), { ssr: false })
+const HeaderDesktop = dynamic(() => import('../common/Header/HeaderDesktop'), { ssr: false })
 
 
 export const AdminLayout = ({ children }: LayoutProps) => {
     return (
         <Auth>
             <HeaderDesktop />
-            sidebar
             {children}
             <Footer />
-        </Auth >
+        </Auth>
     )
 }
 

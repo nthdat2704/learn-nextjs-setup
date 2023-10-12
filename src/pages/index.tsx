@@ -1,7 +1,7 @@
-import { AdminLayout, MainLayout } from '@/components/layout'
-import { Box, Container } from '@mui/material'
-import { FeatureWork, Hero, RecentPost } from '@/components/home'
 import { Seo } from '@/components/common/Seo'
+import { FeatureWork, Hero, RecentPost } from '@/components/home'
+import { AdminLayout, MainLayout } from '@/components/layout'
+import { Box } from '@mui/material'
 
 export default function Home() {
   return (
@@ -24,5 +24,5 @@ export default function Home() {
     </Box>
   )
 }
-Home.Layout = MainLayout
+Home.Layout = AdminLayout
 

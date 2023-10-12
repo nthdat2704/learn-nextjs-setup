@@ -11,8 +11,8 @@ const WorkList = ({ workList }: WorkListProps) => {
     if (workList.length === 0) return null
     return (
         <Box>
-            {workList.map((work) =>
-                <Fragment>
+            {workList.map((work, index) =>
+                <Fragment key={index}>
                     <WorkCard work={work} />
                     <Divider sx={{ my: 3 }} />
                 </Fragment>

@@ -8,7 +8,7 @@ import { useAuth } from '@/swrHook'
 
 type Props = {}
 
-export const HeaderDesktop = (props: Props) => {
+const HeaderDesktop = (props: Props) => {
     const router = useRouter();
     const { profile, logout } = useAuth();
     const isLoggedIn = Boolean(profile?.username)
@@ -57,3 +57,5 @@ export const HeaderDesktop = (props: Props) => {
         </Box >
     )
 }
+
+export default HeaderDesktop

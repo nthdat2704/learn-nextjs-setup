@@ -1,9 +1,8 @@
-import React from 'react'
-import { LayoutProps } from '@/models'
-import { HeaderDesktop } from '@/components/common/Header/index'
 import Footer from '@/components/common/Footer'
+import { LayoutProps } from '@/models'
 import { Box, Stack } from '@mui/material'
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
+const HeaderDesktop = dynamic(() => import('../common/Header/HeaderDesktop'), { ssr: false })
 
 
 export const MainLayout = ({ children }: LayoutProps) => {

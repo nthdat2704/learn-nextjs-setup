@@ -1,5 +1,5 @@
 import { PostItem } from '@/components/blog';
-import { MainLayout } from '@/components/layout';
+import { AdminLayout, MainLayout } from '@/components/layout';
 import { Post } from '@/models';
 import { getPostList } from '@/utils';
 import { Box, Container, Link, Typography } from '@mui/material';
@@ -26,7 +26,7 @@ export default function BlogListPage({ posts }: BlogListPageProps) {
         </Box>
     )
 }
-BlogListPage.Layout = MainLayout
+BlogListPage.Layout = AdminLayout
 
 export const getStaticProps: GetStaticProps = async () => {
     const postList = await getPostList();

@@ -6,7 +6,7 @@ type AuthProps = {
     children: React.ReactNode
 }
 
-export const Auth = ({ children }: AuthProps) => {
+const Auth = ({ children }: AuthProps) => {
     const router = useRouter();
     const { firstLoading, profile } = useAuth();
     useEffect(() => {
@@ -19,3 +19,4 @@ export const Auth = ({ children }: AuthProps) => {
         <div>{children}</div>
     )
 }
+export default Auth
