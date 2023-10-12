@@ -8,7 +8,7 @@ type Props = {}
 export const RecentPost = (props: Props) => {
     const postList: Post[] = [
         {
-            id: '1',
+            id: 1,
             slug: '',
             title: 'Making a design system from scratch',
             publishedDate: '2022-06-15T03:00:00Z',
@@ -17,7 +17,7 @@ export const RecentPost = (props: Props) => {
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
         },
         {
-            id: '2',
+            id: 2,
             slug: '',
             title: 'Creating pixel perfect icons in Figma',
             publishedDate: '2022-06-17T03:00:00Z',
@@ -67,8 +67,8 @@ export const RecentPost = (props: Props) => {
                     }}
                     spacing={4}
                 >
-                    {postList.map(item => {
-                        return <Box><PostCard key={item.id} post={item} /></Box>
+                    {postList.map((item, index) => {
+                        return <Box key={item.id}><PostCard post={item} /></Box>
                     })}
                 </Stack>
 

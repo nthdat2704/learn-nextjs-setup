@@ -3,6 +3,7 @@ import { PostCard } from '@/components/home'
 import React from 'react'
 import { Post, Work } from '@/models'
 import WorkList from '../work/WorkList'
+import { ImageFeatures } from '@/image'
 
 type Props = {}
 
@@ -17,8 +18,7 @@ export const FeatureWork = (props: Props) => {
             shortDescription:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
             fullDescription: '',
-            thumbnailUrl:
-                'https://res.cloudinary.com/kimwy/image/upload/v1648712410/learn-nextjs/item1_cbidwn.jpg',
+            thumbnailUrl: ImageFeatures.image1,
         },
         {
             id: '2',
@@ -29,8 +29,7 @@ export const FeatureWork = (props: Props) => {
             shortDescription:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
             fullDescription: '',
-            thumbnailUrl:
-                'https://res.cloudinary.com/kimwy/image/upload/v1648712410/learn-nextjs/item2_usidpx.jpg',
+            thumbnailUrl: ImageFeatures.image2,
         },
         {
             id: '3',
@@ -41,8 +40,7 @@ export const FeatureWork = (props: Props) => {
             shortDescription:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
             fullDescription: '',
-            thumbnailUrl:
-                'https://res.cloudinary.com/kimwy/image/upload/v1648712410/learn-nextjs/item3_jlfuun.jpg',
+            thumbnailUrl: ImageFeatures.image3,
         },
     ]
     return (
