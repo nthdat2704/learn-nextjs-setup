@@ -1,7 +1,7 @@
 import axiosClient from "./httpRequest";
-
+import { LoginPayload } from "@/models/auth";
 export const authApi = {
-  login(payload: any) {
+  login(payload: LoginPayload) {
     return axiosClient.post("/login", payload);
   },
   logout() {

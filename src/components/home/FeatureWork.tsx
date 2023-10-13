@@ -2,7 +2,7 @@ import { Box, Container, Link, Stack, Typography } from '@mui/material'
 import { PostCard } from '@/components/home'
 import React from 'react'
 import { Post, Work } from '@/models'
-import WorkList from '../work/WorkList'
+import WorkList from '../work/WorkList.1'
 import { ImageFeatures } from '@/image'
 
 type Props = {}
