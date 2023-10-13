@@ -1,10 +1,11 @@
 import { LoginForm } from '@/components/auth'
 import { MainLayout } from '@/components/layout'
 import { useAuth } from '@/swrHook'
+import { getErrorMessage } from '@/utils/get-error-message'
 import { Box, Paper, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 import React from 'react'
-
+import { toast } from 'react-toastify'
 type Props = {}
 
 const Login = (props: Props) => {
@@ -17,7 +18,8 @@ const Login = (props: Props) => {
             await login(data)
             router.push('/')
         } catch (error) {
-            console.log(error);
+            const message = getErrorMessage(error)
+            toast.error(message)
         }
     }
     return (
