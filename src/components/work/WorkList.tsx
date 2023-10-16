@@ -10,7 +10,7 @@ interface WorkListProps {
     loading?: boolean,
 }
 
-const WorkList = ({ workList, loading = false }: WorkListProps) => {
+const WorkList = ({ loading = false, workList, }: WorkListProps) => {
     if (loading) return (
         <Box>
             {Array.from({ length: 3 }).map((_, index) => {

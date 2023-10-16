@@ -1,4 +1,5 @@
 import { TextField, TextFieldProps } from '@mui/material';
+import { ChangeEvent } from 'react';
 import { Control, useController } from 'react-hook-form';
 type InputFieldProps = TextFieldProps & {
     name: string;
@@ -30,7 +31,10 @@ export const InputField = ({ name,
             margin='normal'
             name={name}
             value={value}
-            onChange={onChange}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                onChange(event)
+                externalOnChange?.(event)
+            }}
             onBlur={onBlur}
             inputRef={ref}
             label={label}

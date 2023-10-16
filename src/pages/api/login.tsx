@@ -40,7 +40,7 @@ export default function handler(
                         sameSite: 'lax',
                         expires: new Date(expiredAt)
                     });
-                    (res as NextApiResponse).status(400).json({ message: 'login failed' })
+                    (res as NextApiResponse).status(200).json({ message: 'login successfuly' })
 
 
                 } catch (error) {

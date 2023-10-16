@@ -7,9 +7,9 @@ export interface UseWorkListProps {
   options?: SWRConfiguration;
   enabled?: boolean;
 }
-export const useWorkList = ({ params, options }: UseWorkListProps) => {
+export const useWorkList = ({ params, options, enabled }: UseWorkListProps) => {
   const swrResponse = useSWR(
-    [queryKeys.GET_WORK_LIST, params],
+    enabled ? [queryKeys.GET_WORK_LIST, params] : null,
     () => workApi.getAll(params),
     {
       dedupingInterval: 60 * 1000, // 30s
@@ -17,7 +17,7 @@ export const useWorkList = ({ params, options }: UseWorkListProps) => {
         data: [],
         pagination: {
           _page: 1,
-          _limit: 3,
+          _limit: 10,
           totalRows: 0,
         },
       },

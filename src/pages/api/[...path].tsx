@@ -32,10 +32,7 @@ export default function handler(
             //tell proxy handle response
             selfHandleResponse: false
         })
-        // to fix warning message when not have return response
-        proxy.once("proxyRes", () => {
-            resolve(true);
-        })
+
 
 
     })
