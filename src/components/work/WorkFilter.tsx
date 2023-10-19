@@ -4,6 +4,7 @@ import { Box, InputAdornment, debounce } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
 import { ChangeEvent } from 'react'
+import { AutocompleteField } from '@/components/form'
 
 type WorkFilterProps = {
     initialValue?: WorkFilterPayload;
@@ -43,6 +44,16 @@ const WorkFilter = ({ onSubmit, initialValue }: WorkFilterProps) => {
                 onChange={(event: ChangeEvent<HTMLInputElement>) => {
                     debounceSearchChange()
                 }}
+            />
+            <AutocompleteField
+                name='selectedTagList'
+                label='Filter by category'
+                placeholder='Category'
+                options={[{ title: 'zzzz', key: 'zzzz' }]}
+                getOptionLabel={(option) => option.key}
+                control={control}
+                isOptionEqualToValue={(option, value) => option.key === value.key}
+
             />
         </Box >
     )
