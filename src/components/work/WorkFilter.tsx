@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
 import { ChangeEvent } from 'react'
 import { AutocompleteField } from '@/components/form'
+import { useTagList } from '@/swrHook'
 
 type WorkFilterProps = {
     initialValue?: WorkFilterPayload;
@@ -16,14 +17,22 @@ const WorkFilter = ({ onSubmit, initialValue }: WorkFilterProps) => {
     const { control, handleSubmit, formState: { isSubmitting } } = useForm<WorkFilterPayload>({
         defaultValues: {
             search: '',
+            selectedTagList: [],
             ...initialValue
         },
     })
+    const { data } = useTagList({})
+    const tagList = data?.data || []
+
 
     const handleLoginSubmit = async (values: WorkFilterPayload) => {
         //nếu gọi api thì phải make func này thành async func thì isSubmitting 
         // mới hoạt động đúng, nếu không nó sẽ run 1 loạt và kết thúc 
+        if (!values) return
+        values.taglist_like = values.selectedTagList?.join("|") || ""
+        delete values.selectedTagList;
         await onSubmit?.(values)
+
     }
     const debounceSearchChange = debounce(handleSubmit(handleLoginSubmit), 350)
 
@@ -49,10 +58,11 @@ const WorkFilter = ({ onSubmit, initialValue }: WorkFilterProps) => {
                 name='selectedTagList'
                 label='Filter by category'
                 placeholder='Category'
-                options={[{ title: 'zzzz', key: 'zzzz' }]}
-                getOptionLabel={(option) => option.key}
+                options={tagList}
+                getOptionLabel={(option) => option}
                 control={control}
-                isOptionEqualToValue={(option, value) => option.key === value.key}
+                isOptionEqualToValue={(option, value) => option === value}
+                onChange={() => debounceSearchChange()}
 
             />
         </Box >

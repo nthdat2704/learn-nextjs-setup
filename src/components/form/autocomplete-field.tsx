@@ -9,6 +9,7 @@ type AutocompleteFieldProps<T, K extends FieldValues> = Partial<AutocompleteProp
     placeholder?: string
     options: T[]
     getOptionLabel: (option: T) => string
+    onChange: (selectedOption: T[]) => void
 }
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
@@ -22,7 +23,7 @@ export const AutocompleteField = <T, K extends FieldValues>({
     options,
     getOptionLabel,
     isOptionEqualToValue,
-    // onChange: externalOnChange,
+    onChange: externalOnChange,
     // onBlur: externalOnBlur,
     // value: externalValue,
     // ref: externalRef,
@@ -58,11 +59,25 @@ export const AutocompleteField = <T, K extends FieldValues>({
                 </li>
             )}
             renderInput={(params) => (
-                <TextField {...params}
+                <TextField
+                    name={name}
+                    {...params}
                     label="Filter by category"
                     margin='normal'
-                    placeholder={placeholder} />
+                    placeholder={placeholder}
+                    error={!!error}
+                    helperText={error?.message}
+                />
+
             )}
+            onChange={(event, value) => {
+                console.log('change', value)
+                onChange(value)
+                externalOnChange?.(value)
+            }}
+            onBlur={onBlur}
+            value={value}
+            ref={ref}
         />
     )
 }

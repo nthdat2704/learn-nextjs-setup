@@ -21,7 +21,8 @@ const WorksPage = (props: Props) => {
         ...router.query
     }
     const initialSearchPayload: WorkFilterPayload = {
-        search: filter.title_like || ""
+        search: filter.title_like || "",
+        selectedTagList: filter.tagList_like?.split("|") || []
     }
 
 
@@ -46,7 +47,8 @@ const WorksPage = (props: Props) => {
             query: {
                 ...filter,
                 _page: 1,
-                title_like: newFilters.search
+                title_like: newFilters.search,
+                tagList_like: newFilters.taglist_like
             },
         },
             undefined,

@@ -11,7 +11,7 @@ export interface Work {
 
 export interface WorkFilterPayload {
   search: string;
-  taglist_search: string;
+  taglist_like?: string;
 
   selectedTagList?: string[];
 }
